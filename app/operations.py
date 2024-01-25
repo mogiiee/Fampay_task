@@ -3,8 +3,8 @@ from datetime import datetime, timedelta
 from pymongo import DESCENDING
 
 
-def Inserter(number_of_inserts, insert_query):
-    list_of_entries = youtube_api.YoutubeCaller(number_of_inserts, insert_query)
+def inserter(number_of_inserts, insert_query):
+    list_of_entries = youtube_api.youtube_caller(number_of_inserts, insert_query)
     if len(list_of_entries) == 0:
         return responses.response(False, "No videos found", None)
     else:

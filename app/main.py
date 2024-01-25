@@ -14,7 +14,7 @@ async def root():
 @app.get('/fetch_and_insert')
 async def fetch_and_insert(number_of_inserts, insert_query):
     try:
-        result = operations.Inserter(number_of_inserts, insert_query)
+        result = operations.inserter(number_of_inserts, insert_query)
         return responses.response(True, "Data inserted", result)
     except Exception as e:
         return responses.response(False, str(e), None)
@@ -23,7 +23,7 @@ async def fetch_and_insert(number_of_inserts, insert_query):
 @app.get('/get_all_data')
 async def get_all_data(limit, page):
     try:
-        result = await operations.get_data(limit, page)
+        result =  operations.get_data(limit, page)
         return result
     except Exception as e:
         return responses.response(False, str(e), None)
