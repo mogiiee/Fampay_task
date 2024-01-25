@@ -1,14 +1,12 @@
-from dotenv import load_dotenv
-import os
+from decouple import config
 
-load_dotenv()
 
 #youtube API credentials
-API_KEY_1 = os.environ.get("YOUTUBE_API_KEY1")
-API_KEY_2 = os.environ.get("YOUTUBE_API_KEY2")
+API_KEY_1 = config("YOUTUBE_API_KEY1")
+API_KEY_2 = config("YOUTUBE_API_KEY2")
 
 #database credentials
 
-MONGO_DETAILS = os.environ.get("MONGO_DB_CREDENTIALS")
-MONGO_DB_NAME = os.environ.get("MONGO_DB_NAME")
-MONGO_COLLECTION_NAME = os.environ.get("MONGO_COLLECTION_NAME")
+MONGO_DETAILS = config("MONGO_DB_CREDENTIALS")
+MONGO_DB_NAME = config("MONGO_DB_NAME")
+MONGO_COLLECTION_NAME = config("MONGO_COLLECTION_NAME")
