@@ -1,8 +1,21 @@
-from . import database, responses
+from . import database, responses,youtube_api
 from datetime import datetime, timedelta
 from pymongo import DESCENDING
 
-def GetData(limit, page):
+
+def Inserter(number_of_inserts, insert_query):
+    list_of_entries = youtube_api.YoutubeCaller(number_of_inserts, insert_query)
+    if len(list_of_entries) == 0:
+        return responses.response(False, "No videos found", None)
+    else:
+        database.collection.insert_many(list_of_entries)
+    return responses.response(True, None, {
+        "inserted_count": int(len(list_of_entries)),
+        # "inserted_data": list_of_entries
+    })
+
+
+def get_data(limit, page):
     page = int(page)
     limit = int(limit)
 
@@ -10,7 +23,7 @@ def GetData(limit, page):
         return responses.response(False, "page cannot be less than 1", None)
 
     skip = (page - 1) * limit 
-    
+
     try:
         # Count total documents for pagination metadata
         total_videos = database.collection.count_documents({})
@@ -26,7 +39,6 @@ def GetData(limit, page):
             "current_page": page,
             "total_pages": total_pages
         }
-
         return responses.response(True, "Results fetched", response_data)
     except Exception as e:
         return responses.response(False, str(e), None)
@@ -39,5 +51,3 @@ def get_yt_datetime():
     return timern
 
 #inserts the videos into the database
-# def insert_videos(doc):
-#     p

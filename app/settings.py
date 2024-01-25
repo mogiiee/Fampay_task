@@ -4,6 +4,7 @@ from decouple import config
 #youtube API credentials
 API_KEY_1 = config("YOUTUBE_API_KEY1")
 API_KEY_2 = config("YOUTUBE_API_KEY2")
+API_KEY_3 = config("YOUTUBE_API_KEY3")
 
 #database credentials
 

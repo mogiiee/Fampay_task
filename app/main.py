@@ -11,23 +11,19 @@ async def root():
 
 
 
-# @app.post("/insert_videos")
-# async def insert_videos(metadata: information):
-
-#     result  = database.collection.insert_one(metadata.model_dump())
-
-#     return responses.response(True,None,str(result))
-
-@app.get("/get_videos")
-async def get_videos(number, insert_query):
-    result = youtube_api.YoutubeCaller(number, insert_query)
-    return responses.response(True,None,result)
+@app.get('/fetch_and_insert')
+async def fetch_and_insert(number_of_inserts, insert_query):
+    try:
+        result = operations.Inserter(number_of_inserts, insert_query)
+        return responses.response(True, "Data inserted", result)
+    except Exception as e:
+        return responses.response(False, str(e), None)
 
 
 @app.get('/get_all_data')
 async def get_all_data(limit, page):
     try:
-        result = operations.GetData(limit, page)
+        result = await operations.get_data(limit, page)
         return result
     except Exception as e:
         return responses.response(False, str(e), None)
