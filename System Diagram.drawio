@@ -1,0 +1,52 @@
+<mxfile host="app.diagrams.net" modified="2024-01-26T13:18:45.436Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36" etag="YPjYxx88rNGIg9sppP0o" version="23.0.2" type="github">
+  <diagram name="Page-1" id="qmn97SwFT8aCEBuLYQI4">
+    <mxGraphModel dx="2163" dy="870" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Ay2mZTwQjCNcZYmMCGWp-9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="Ay2mZTwQjCNcZYmMCGWp-3" target="Ay2mZTwQjCNcZYmMCGWp-8" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Ay2mZTwQjCNcZYmMCGWp-3" value="Celery Worker" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
+          <mxGeometry x="120" y="200" width="160" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="Ay2mZTwQjCNcZYmMCGWp-4" value="API Fetch Endpoint" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="145" y="370" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Ay2mZTwQjCNcZYmMCGWp-16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="Ay2mZTwQjCNcZYmMCGWp-5" target="Ay2mZTwQjCNcZYmMCGWp-15" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Ay2mZTwQjCNcZYmMCGWp-5" value="Fast API" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
+          <mxGeometry x="440" y="200" width="160" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="Ay2mZTwQjCNcZYmMCGWp-6" value="Data Fetch Service" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="465" y="370" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Ay2mZTwQjCNcZYmMCGWp-7" value="Mongo DB" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" parent="1" vertex="1">
+          <mxGeometry x="330" y="50" width="60" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Ay2mZTwQjCNcZYmMCGWp-8" value="YouTube API" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="140" y="60" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Ay2mZTwQjCNcZYmMCGWp-11" value="Celery Beat" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-110" y="200" width="90" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="Ay2mZTwQjCNcZYmMCGWp-12" value="Redis" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-10" y="270" width="120" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="Ay2mZTwQjCNcZYmMCGWp-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="Ay2mZTwQjCNcZYmMCGWp-3" target="Ay2mZTwQjCNcZYmMCGWp-7" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Ay2mZTwQjCNcZYmMCGWp-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="Ay2mZTwQjCNcZYmMCGWp-5" target="Ay2mZTwQjCNcZYmMCGWp-7" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Ay2mZTwQjCNcZYmMCGWp-15" value="Actor" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
+          <mxGeometry x="680" y="250" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Ay2mZTwQjCNcZYmMCGWp-17" value="Containers Required&lt;br&gt;* FAST API Server&lt;br&gt;* Celery Beat&lt;br&gt;* Redis&lt;br&gt;* Celery Worker" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="447.5" y="430" width="145" height="190" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
