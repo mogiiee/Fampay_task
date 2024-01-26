@@ -1,5 +1,5 @@
 from pymongo import MongoClient
-from web_server.app import settings
+from . import settings
 
 
 client = MongoClient(settings.MONGO_DETAILS)

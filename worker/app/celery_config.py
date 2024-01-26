@@ -9,9 +9,7 @@ app.conf.beat_schedule = {
     "fetch_and_store_youtube_data_every_10_seconds": {
         "task": "app.tasks.fetch_and_store_youtube_data",
         "schedule": timedelta(seconds=10),
-        "args": (10, "football"),  # Number of videos and query
+        "args": (5, "music"),  # Number of videos and query
     },
 }
-
-
-app.autodiscover_tasks(["app"])
+# app.autodiscover_tasks(["app"])

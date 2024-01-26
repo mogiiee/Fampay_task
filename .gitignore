@@ -4,3 +4,4 @@ app/__pycache__
 app/celerybeat-schedule.db
 app/dump.rdb
 celerybeat-schedule.db
+worker/__pycache__

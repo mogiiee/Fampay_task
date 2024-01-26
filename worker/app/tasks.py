@@ -1,18 +1,16 @@
-from web_server.app.youtube_api import youtube_caller
-from web_server.app.responses import response
-from web_server.app import database
+from . import youtube_api, responses, database
 from .celery_config import app
 
 
 @app.task(name="app.tasks.fetch_and_store_youtube_data")
 def fetch_and_store_youtube_data(number, query):
-    # Use your existing youtube_caller function
-    youtube_data = youtube_caller(number, query)
+    # Use youtube_caller function
+    youtube_data = youtube_api.youtube_caller(number, query)
     if len(youtube_data) == 0:
-        return response(False, "No videos found", None)
+        return responses.response(False, "No videos found", None)
     else:
         database.collection.insert_many(youtube_data)
-    return response(
+    return responses.response(
         True,
         None,
         {

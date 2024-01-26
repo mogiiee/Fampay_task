@@ -2,8 +2,11 @@ from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from datetime import datetime, timedelta, timezone
 
-from web_server.app import database
-from web_server.app import settings  # Assuming settings contains your API keys
+from . import database
+
+from . import settings
+
+# Assuming settings contains your API keys
 
 # List of API keys
 API_KEYS = [settings.API_KEY_1, settings.API_KEY_2, settings.API_KEY_3]
@@ -11,17 +14,21 @@ API_KEYS = [settings.API_KEY_1, settings.API_KEY_2, settings.API_KEY_3]
 
 def get_last_call_time():
     # Get the last call time document from the collection 'last_call_time_collection'
-    last_call_time_doc = database.time_updater_collection.find_one({"name": "last_call_time"})
+    last_call_time_doc = database.time_updater_collection.find_one(
+        {"name": "last_call_time"}
+    )
     # If the document is not found, it means this is the first time the function is called
     if last_call_time_doc is None:
         # Set the last call time to 1 minute ago to avoid missing recent videos
         last_call_time = datetime.now() - timedelta(minutes=1)
         # Insert a new document with the last call time
-        database.time_updater_collection.insert_one({"name": "last_call_time", "timestamp": last_call_time})
+        database.time_updater_collection.insert_one(
+            {"name": "last_call_time", "timestamp": last_call_time}
+        )
         return last_call_time
     else:
         # If found, return the stored last call time
-        return last_call_time_doc['timestamp']
+        return last_call_time_doc["timestamp"]
 
 
 def update_last_fetch_time(timestamp):
@@ -29,7 +36,7 @@ def update_last_fetch_time(timestamp):
     database.time_updater_collection.update_one(
         {"metadata": "last_fetch_time"},
         {"$set": {"timestamp": timestamp}},
-        upsert=True  # Create the document if it doesn't exist
+        upsert=True,  # Create the document if it doesn't exist
     )
 
 
@@ -73,12 +80,18 @@ def youtube_caller(number, insert_query):
 
             if mongo_list:
                 # Use the publishing time of the most recent video fetched as the new last call time
-                last_video_publish_time = max(item["publishing_datetime"] for item in mongo_list)
-                
+                last_video_publish_time = max(
+                    item["publishing_datetime"] for item in mongo_list
+                )
+
                 # When converting back to datetime, remove the 'Z' and specify the UTC timezone
-                last_video_publish_time = datetime.fromisoformat(last_video_publish_time.replace('Z', ''))
-                last_video_publish_time = last_video_publish_time.replace(tzinfo=timezone.utc)
-                
+                last_video_publish_time = datetime.fromisoformat(
+                    last_video_publish_time.replace("Z", "")
+                )
+                last_video_publish_time = last_video_publish_time.replace(
+                    tzinfo=timezone.utc
+                )
+
                 update_last_fetch_time(last_video_publish_time)
 
             return mongo_list

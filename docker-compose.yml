@@ -9,7 +9,7 @@ services:
       - app-tier
 
   worker:
-    build: .
+    build: ./worker/
     networks:
       - app-tier
     depends_on:
@@ -17,22 +17,22 @@ services:
     command: "celery -A app.celery_config worker -l info"
 
   beat:
-    build: .
+    build: ./worker/
     networks:
       - app-tier
     depends_on:
       - redis
     command: "celery -A app.celery_config beat -l info"
 
-  fastapi:
-    build: ./app/
+  server:
+    build: ./web_server/
     ports:
       - "8000:8000"
     networks:
       - app-tier
     command: >
       /bin/bash -c "
-      uvicorn main:app --host 0.0.0.0;
+      uvicorn app.main:app --host 0.0.0.0;
       "
 
 networks:
