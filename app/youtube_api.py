@@ -1,8 +1,9 @@
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from datetime import datetime, timedelta, timezone
-from dateutil import parser
-from . import settings, database  # Assuming settings contains your API keys
+
+from web_server.app import database
+from web_server.app import settings  # Assuming settings contains your API keys
 
 # List of API keys
 API_KEYS = [settings.API_KEY_1, settings.API_KEY_2, settings.API_KEY_3]

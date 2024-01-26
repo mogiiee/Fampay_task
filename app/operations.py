@@ -1,4 +1,6 @@
-from . import database, responses, youtube_api
+from web_server.app import youtube_api
+from web_server.app import database
+from web_server.app import responses
 from datetime import datetime, timedelta
 from pymongo import DESCENDING
 
@@ -8,7 +10,7 @@ def inserter(number_of_inserts, insert_query):
     if len(list_of_entries) == 0:
         return responses.response(False, "No videos found", None)
     else:
-        database.collection2.insert_many(list_of_entries)
+        database.collection.insert_many(list_of_entries)
     return responses.response(
         True,
         None,
@@ -42,7 +44,7 @@ def get_data(limit, page):
         ]
 
         # Execute the count pipeline
-        count_results = list(database.collection3.aggregate(count_pipeline))
+        count_results = list(database.collection.aggregate(count_pipeline))
         total_videos = count_results[0]['total_unique_videos'] if count_results else 0
         total_pages = (total_videos + limit - 1) // limit
 
@@ -74,7 +76,7 @@ def get_data(limit, page):
         ]
 
         # Execute the data pipeline
-        results = database.collection3.aggregate(data_pipeline)
+        results = database.collection.aggregate(data_pipeline)
 
         # Creating the response with metadata
         response_data = {

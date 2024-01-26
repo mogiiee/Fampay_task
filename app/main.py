@@ -1,5 +1,6 @@
 from fastapi import FastAPI
-from . import operations, responses, database, youtube_api
+from app import operations
+from app import responses
 
 app = FastAPI()
 

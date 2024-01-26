@@ -2,7 +2,7 @@ from celery import Celery
 from datetime import timedelta
 
 # Configure Celery to use Redis as the broker
-app = Celery("tasks", broker="redis://localhost:6379/0", include=["app.tasks"])
+app = Celery("tasks", broker="redis://redis:6379/0", include=["app.tasks"])
 
 
 app.conf.beat_schedule = {
