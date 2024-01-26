@@ -19,8 +19,8 @@ async def fetch_and_insert(number_of_inserts, insert_query):
         return responses.response(False, str(e), None)
 
 
-@app.get("/get_all_data")
-async def get_all_data(limit, page):
+@app.get("/get_unique_data")
+async def get_unique_data(limit, page):
     try:
         result = operations.get_data(limit, page)
         return result

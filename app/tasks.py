@@ -11,7 +11,7 @@ def fetch_and_store_youtube_data(number, query):
     if len(youtube_data) == 0:
         return response(False, "No videos found", None)
     else:
-        database.collection.insert_many(youtube_data)
+        database.collection3.insert_many(youtube_data)
     return response(
         True,
         None,
